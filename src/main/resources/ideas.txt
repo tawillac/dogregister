@@ -1,0 +1,2 @@
+- Zweidimensionales Array "falschherum" iterieren (Innere Arrays zuerst)
+- String copy

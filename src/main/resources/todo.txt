@@ -1,0 +1,2 @@
+Database-Parameter in config file auslagern
+Persistierung parallelisieren

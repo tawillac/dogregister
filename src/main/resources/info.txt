@@ -1,0 +1,10 @@
+Docker-Container erstellen:
+LINUX: sudo docker run -e MYSQL_ROOT_PASSWORD=mysql -p 1234:3306 --name=mysql -d mysql
+WINDOWS: [Admin-Shell] docker run -e MYSQL_ROOT_PASSWORD=mysql -p 1234:3306 --name=mysql -d mysql
+
+Datenbank anlegen, Tabelle anlegen
+LINUX: sudo mysql -P 1234 -u root -p  < src/main/resources/database.mysql
+WINDOWS: mysql -P 1234 -u root -p -e "source .\src\main\resources\database.mysql"
+
+
+

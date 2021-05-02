@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS performanceTask;
+
+USE performanceTask;
+
+CREATE TABLE dogs
+(
+    name VARCHAR(100) PRIMARY KEY,
+    race VARCHAR(100),
+    owner VARCHAR(100),
+    birthday DATETIME
+);
