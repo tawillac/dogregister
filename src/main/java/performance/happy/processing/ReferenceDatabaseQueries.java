@@ -1,16 +1,15 @@
 package performance.happy.processing;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.Level;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
-import performance.unhappy.logging.CustomLogger;
 import shared.domain.Dog;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @State(Scope.Benchmark)
 public class ReferenceDatabaseQueries {
@@ -23,7 +22,7 @@ public class ReferenceDatabaseQueries {
     private String table = "dogs";
     private String connectionUrl = "jdbc:mysql://" + host + ":" + port + "/" + database + "?serverTimezone=UTC";
 
-    private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+    private Logger logger = Logger.getLogger(this.getClass());
 
 
     public ReferenceDatabaseQueries() {
@@ -54,7 +53,7 @@ public class ReferenceDatabaseQueries {
                 return true;
             }
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "SQLException: " + e.getMessage());
+            logger.log(Level.WARN, "SQLException: " + e.getMessage());
         }
         return false;
     }
@@ -77,7 +76,7 @@ public class ReferenceDatabaseQueries {
                 result = new Dog(name, race, owner, LocalDate.from(birthday));
             }
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "SQLException: " + e.getMessage());
+            logger.log(Level.WARN, "SQLException: " + e.getMessage());
         }
         return result;
     }
@@ -97,9 +96,7 @@ public class ReferenceDatabaseQueries {
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "SQLException: " + e.getMessage());
-        } catch (Exception e) {
-            logger.log(Level.WARNING, "Exception: " + e.getMessage());
+            logger.log(Level.WARN, "SQLException: " + e.getMessage());
         }
     }
 
@@ -116,9 +113,7 @@ public class ReferenceDatabaseQueries {
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
-            logger.log(Level.WARNING,"SQLException: " + e.getMessage());
-        } catch (Exception e) {
-            logger.log(Level.WARNING, "Exception: " + e.getMessage());
+            logger.log(Level.WARN,"SQLException: " + e.getMessage());
         }
     }
 
@@ -137,7 +132,7 @@ public class ReferenceDatabaseQueries {
             }
 
         } catch (SQLException ex) {
-            logger.log(Level.WARNING, ex.getMessage());
+            logger.log(Level.WARN, ex.getMessage());
         }
         return raceCount;
     }
@@ -155,7 +150,7 @@ public class ReferenceDatabaseQueries {
             }
 
         } catch (SQLException ex) {
-            logger.log(Level.WARNING, ex.getMessage());
+            logger.log(Level.WARN, ex.getMessage());
         }
         return result;
     }

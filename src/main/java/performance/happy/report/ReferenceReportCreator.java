@@ -1,15 +1,16 @@
 package performance.happy.report;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import performance.happy.output.ReferenceJsonFileWriter;
 import shared.domain.DogReport;
 
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class ReferenceReportCreator {
 
-    private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+    private Logger logger = Logger.getLogger(this.getClass());
     private ReferenceJsonFileWriter jsonFileWriter = new ReferenceJsonFileWriter();
 
     private File reportFile;

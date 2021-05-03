@@ -1,5 +1,7 @@
 package performance.happy.register;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.Level;
 import org.openjdk.jmh.annotations.*;
 import performance.happy.input.ReferenceDogReader;
 import performance.happy.processing.ReferenceEvaluator;
@@ -12,17 +14,15 @@ import shared.domain.DogReport;
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @State(Scope.Benchmark)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-@Fork(value = 2, jvmArgs = {"-Xms2G", "-Xmx2G"})
+@Fork(value = 1, jvmArgs = {"-Xms2G", "-Xmx2G"})
 @Warmup(iterations = 3)
 @Measurement(iterations = 10)
 public class ReferenceDogRegister {
 
-    private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+    private Logger logger = Logger.getLogger(this.getClass());
     private File inputFile;
     private File reportFile;
 
@@ -42,7 +42,7 @@ public class ReferenceDogRegister {
     @BenchmarkMode(Mode.AverageTime)
     public void register() {
         if (!inputFile.exists() || !inputFile.isFile()) {
-            logger.log(Level.WARNING, "register() - InputFile is invalid!");
+            logger.log(Level.WARN, "register() - InputFile is invalid!");
             return;
         }
         List<Dog> dogs = createListOfDogs(inputFile);

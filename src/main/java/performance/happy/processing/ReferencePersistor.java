@@ -1,13 +1,11 @@
 package performance.happy.processing;
 
-import org.openjdk.jmh.annotations.*;
+import org.apache.log4j.Logger;
+import org.apache.log4j.Level;
 import shared.domain.Dog;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ReferencePersistor {
 

@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH);
-
+        org.apache.log4j.BasicConfigurator.configure();
         performUnhappily();
         performHappily();
     }

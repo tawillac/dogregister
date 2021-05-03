@@ -10,6 +10,7 @@ public class Benchmarker {
 
     public static void main(String[] args) throws Exception {
         Locale.setDefault(Locale.ENGLISH);
+        org.apache.log4j.BasicConfigurator.configure();
 
         Options opt = new OptionsBuilder()
                 .include(DogRegister.class.getSimpleName())

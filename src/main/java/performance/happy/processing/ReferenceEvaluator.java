@@ -1,10 +1,10 @@
 package performance.happy.processing;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.Level;
 import org.openjdk.jmh.annotations.*;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @State(Scope.Benchmark)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class ReferenceEvaluator {
 
     private ReferenceDatabaseQueries databaseQueries = new ReferenceDatabaseQueries();
-    private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+    private Logger logger = Logger.getLogger(this.getClass());
 
     @Benchmark
     @BenchmarkMode(Mode.AverageTime)
