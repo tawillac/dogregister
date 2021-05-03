@@ -1,2 +1,4 @@
-- Zweidimensionales Array "falschherum" iterieren (Innere Arrays zuerst)
-- String copy
+Zweidimensionales Array "falschherum" iterieren (Innere Arrays zuerst)
+String copy
+Database-Parameter in config file auslagern
+Persistierung parallelisieren
