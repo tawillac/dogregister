@@ -32,7 +32,7 @@ public class DatabasePreparer {
     private static final String TRUNCATE_TABLE_SQL = "TRUNCATE TABLE " + TABLE;
     private static final String DROP_TABLE_SQL = "DROP TABLE IF EXISTS " + TABLE;
 
-    public static void main(String[] args) {
+    public static void setUpDatabase() {
         Locale.setDefault(Locale.ENGLISH);
         org.apache.log4j.BasicConfigurator.configure();
 

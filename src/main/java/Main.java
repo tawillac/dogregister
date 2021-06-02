@@ -1,5 +1,6 @@
 
 import hunderegistrierung.optimized.register.ReferenceDogRegister;
+import shared.DatabasePreparer;
 import shared.FileOpener;
 import hunderegistrierung.legacy.register.DogRegister;
 
@@ -15,6 +16,9 @@ public class Main {
     public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH);
         org.apache.log4j.BasicConfigurator.configure();
+
+        prepareDatabase();
+
         Date startDate1 = new Date();
         performUnhappily();
         Date stopDate1 = new Date();
@@ -44,6 +48,10 @@ public class Main {
         ReferenceDogRegister dogRegister = new ReferenceDogRegister(inputFile, reportFile);
         dogRegister.register();
         System.out.println("performHappily() START (" + startDate + ") -> STOP (" + new Date() + ")");
+    }
+
+    public static void prepareDatabase() {
+        DatabasePreparer.setUpDatabase();
     }
 
 
