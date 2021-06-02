@@ -15,8 +15,6 @@ public class Benchmarker {
         Options opt = new OptionsBuilder()
                 .include(DogRegister.class.getSimpleName())
                 .include(ReferenceDogRegister.class.getSimpleName())
-                //.include(Evaluator.class.getSimpleName())
-                //.include(ReferenceEvaluator.class.getSimpleName())
                 .build();
 
         new Runner(opt).run();
