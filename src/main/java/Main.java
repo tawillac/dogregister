@@ -1,7 +1,7 @@
 
-import performance.happy.register.ReferenceDogRegister;
+import hunderegistrierung.optimized.register.ReferenceDogRegister;
 import shared.FileOpener;
-import performance.unhappy.register.DogRegister;
+import hunderegistrierung.legacy.register.DogRegister;
 
 import java.io.File;
 import java.util.Date;

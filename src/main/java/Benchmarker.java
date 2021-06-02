@@ -1,8 +1,8 @@
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
-import performance.happy.register.ReferenceDogRegister;
-import performance.unhappy.register.DogRegister;
+import hunderegistrierung.optimized.register.ReferenceDogRegister;
+import hunderegistrierung.legacy.register.DogRegister;
 
 import java.util.Locale;
 
