@@ -11,13 +11,14 @@ import java.util.ArrayList;
 @State(Scope.Benchmark)
 public class DatabaseQueries {
 
-    private String user = "root";
-    private String password = "mysql";
-    private String host = "localhost";
-    private String port = "1234";
-    private String database = "performanceTask";
-    private String table = "dogs";
-    private String connectionUrl = "jdbc:mysql://" + host + ":" + port + "/" + database + "?serverTimezone=UTC";
+    private final static String USER = "root";
+    private final static String PASSWORD = "mysql";
+    private final static String HOST = "localhost";
+    private final static String PORT = "1234";
+    private final static String DATABASE = "performanceTask";
+    private final static String TABLE = "dogs";
+
+    private String connectionUrl = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?serverTimezone=UTC";
 
     private CustomLogger logger = new CustomLogger();
 
@@ -37,9 +38,9 @@ public class DatabaseQueries {
     public boolean containsDog(Dog dog) {
         logger.log("containsDog() " + dog);
 
-        String selectQuery = "SELECT * FROM " + table;
+        String selectQuery = "SELECT * FROM " + TABLE;
         boolean contains = false;
-        try (Connection conn = DriverManager.getConnection(connectionUrl, user, password);
+        try (Connection conn = DriverManager.getConnection(connectionUrl, USER, PASSWORD);
              PreparedStatement ps = conn.prepareStatement(selectQuery);
              ResultSet rs = ps.executeQuery()) {
 
@@ -58,9 +59,9 @@ public class DatabaseQueries {
     public Dog getDog(String dogName) {
         logger.log("getDog() " + dogName);
 
-        String selectQuery = "SELECT name, race, owner, birthday FROM " + table;
+        String selectQuery = "SELECT name, race, owner, birthday FROM " + TABLE;
         Dog result = null;
-        try (Connection conn = DriverManager.getConnection(connectionUrl, user, password);
+        try (Connection conn = DriverManager.getConnection(connectionUrl, USER, PASSWORD);
              PreparedStatement ps = conn.prepareStatement(selectQuery);
              ResultSet rs = ps.executeQuery()) {
 
@@ -81,9 +82,9 @@ public class DatabaseQueries {
 
     public void insertDog(final Dog dog) {
         logger.log("insertDog(" + dog + ")");
-        String insertQuery = "INSERT INTO " + table + " (name, race, owner, birthday) VALUES (?, ?, ?, ?)";
+        String insertQuery = "INSERT INTO " + TABLE + " (name, race, owner, birthday) VALUES (?, ?, ?, ?)";
 
-        try (Connection conn = DriverManager.getConnection(connectionUrl, user, password);
+        try (Connection conn = DriverManager.getConnection(connectionUrl, USER, PASSWORD);
              PreparedStatement preparedStatement = conn.prepareStatement(insertQuery)) {
 
             preparedStatement.setString(1, dog.getName());
@@ -102,9 +103,9 @@ public class DatabaseQueries {
 
     public void updateDog(final Dog dog) {
         logger.log("updateDog(" + dog.getName() + ")");
-        String updateQuery = "UPDATE " + table + " SET owner=? WHERE name=?";
+        String updateQuery = "UPDATE " + TABLE + " SET owner=? WHERE name=?";
 
-        try (Connection conn = DriverManager.getConnection(connectionUrl, user, password);
+        try (Connection conn = DriverManager.getConnection(connectionUrl, USER, PASSWORD);
              PreparedStatement preparedStatement = conn.prepareStatement(updateQuery)) {
 
             preparedStatement.setString(1, dog.getOwner());
@@ -122,9 +123,9 @@ public class DatabaseQueries {
     public ArrayList<Dog> getAllDogsOfRace(String raceName) {
         logger.log("getAllDogsOfRace(" + raceName + ")");
 
-        String selectQuery = "SELECT name, race, owner, birthday FROM " + table + " WHERE race=?";
+        String selectQuery = "SELECT name, race, owner, birthday FROM " + TABLE + " WHERE race=?";
         ArrayList<Dog> dogs = new ArrayList<>();
-        try (Connection conn = DriverManager.getConnection(connectionUrl, user, password);
+        try (Connection conn = DriverManager.getConnection(connectionUrl, USER, PASSWORD);
              PreparedStatement preparedStatement = conn.prepareStatement(selectQuery)) {
             preparedStatement.setString(1, raceName);
             ResultSet rs = preparedStatement.executeQuery();
@@ -145,9 +146,9 @@ public class DatabaseQueries {
     public ArrayList<String> getAllOwners() {
         logger.log("getAllOwners()");
 
-        String selectQuery = "SELECT owner FROM " + table;
+        String selectQuery = "SELECT owner FROM " + TABLE;
         ArrayList<String> owners = new ArrayList<>();
-        try (Connection conn = DriverManager.getConnection(connectionUrl, user, password);
+        try (Connection conn = DriverManager.getConnection(connectionUrl, USER, PASSWORD);
              PreparedStatement ps = conn.prepareStatement(selectQuery);
              ResultSet rs = ps.executeQuery()) {
 
@@ -167,9 +168,9 @@ public class DatabaseQueries {
     public ArrayList<Dog> getAllDogs() {
         logger.log("getAllDogs()");
 
-        String selectQuery = "SELECT name, race, owner, birthday FROM " + table ;
+        String selectQuery = "SELECT name, race, owner, birthday FROM " + TABLE;
         ArrayList<Dog> dogs = new ArrayList<>();
-        try (Connection conn = DriverManager.getConnection(connectionUrl, user, password);
+        try (Connection conn = DriverManager.getConnection(connectionUrl, USER, PASSWORD);
              PreparedStatement preparedStatement = conn.prepareStatement(selectQuery)) {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {

@@ -28,7 +28,7 @@ public class ReferenceDogRegister {
 
     public ReferenceDogRegister() {
         String[] test_reportfile_path = new String[]{"src", "main", "resources", "report.json"};
-        String[] test_inputfile_path = new String[]{"src", "main", "resources", "input.csv"};
+        String[] test_inputfile_path = new String[]{"src", "main", "resources", "input_small.csv"};
         this.inputFile = FileOpener.getFile(test_inputfile_path);
         this.reportFile = FileOpener.getFile(test_reportfile_path);
     }
